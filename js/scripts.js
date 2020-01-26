@@ -2,8 +2,8 @@ var canvas = document.getElementById('myCanvas'),
     context = canvas.getContext('2d');
 uploadedFile = document.getElementById('uploaded-file');
 
-document.getElementById("butTest").addEventListener("click", vizualizare("mesaj"));
-
+aaA = document.getElementById("butTest");
+//aaA.onclick = vizualizare("fdsfds")
 
 
 window.addEventListener('DOMContentLoad', initImageLoader);
