@@ -6,8 +6,6 @@ var canvas = document.getElementById('myCanvas'),
 window.addEventListener('DOMContentLoad', initImageLoader);
 
 function initImageLoader() {
-    uploadedFile.addEventListener('change', handleManualUploadedFiles);
-
     function handleManualUploadedFiles(ev) {
         var file = ev.target.files[0];
         handleFile(file);
