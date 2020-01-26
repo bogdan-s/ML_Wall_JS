@@ -1,38 +1,34 @@
 var canvas = document.getElementById('myCanvas'), 
     context = canvas.getContext('2d');
+    uploadedFile = document.getElementById('uploaded-file');
+
 
 window.addEventListener('DOMContentLoad', initImageLoader);
 
 function initImageLoader() {
-    var location = window.location.href.replace(/\/+$/, "");
-    loadFile(location + './images/pic_the_scream.jpg');
-}
+    uploadedFile.addEventListener('change', handleManualUploadedFiles);
 
-function loadFile(file) {
-    var tempImageStore = new Image();
-
-    // set up the onload function - it won't run this code wntil the page loads
-    tempImageStore.onload = function(ev) {
-        // Gets the canvas width and height, sets the canvas size
-        canvas.height = ev.target.height;
-        canvas.width = ev.target.width;
-
-        // Draw the image onto the canvas
-        context.drawImage(ev.target, 0, 0);
+    function handleManualUploadedFiles(ev) {
+        var file = ev.target.files[0];
+        handleFile(file);
     }
-
-    tempImageStore.src = file;
-
-    return true;
 }
 
+function handleFile(file) {
+    var imageType = /image.*/;
 
+    if (file.type.match(imageType)) {
+        var reader = new FileReader();
 
+        reader.onloadend = function (event) {
+            var tempImageStore = new Image();
 
+            tempImageStore.onload = function(ev) {
+                canvas.height = ev.target.height;
+                canvas.width = ev.target.width;
 
-
-
-
-
-
-
+                context.drawImage(ev.target, 0, 0);
+            }
+        }
+    }
+}
