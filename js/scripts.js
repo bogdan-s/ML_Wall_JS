@@ -1,6 +1,9 @@
 var canvas = document.getElementById('myCanvas'), 
     context = canvas.getContext('2d');
-    uploadedFile = document.getElementById('uploaded-file');
+uploadedFile = document.getElementById('uploaded-file');
+
+document.getElementById("butTest").addEventListener("click", vizualizare("mesaj"));
+
 
 
 window.addEventListener('DOMContentLoad', initImageLoader);
@@ -11,6 +14,8 @@ function initImageLoader() {
     function handleManualUploadedFiles(ev) {
         var file = ev.target.files[0];
         handleFile(file);
+        document.getElementById('test').innerHTML = file;
+        vizualizare("bla bla")
     }
 }
 
@@ -35,4 +40,11 @@ function handleFile(file) {
 
     reader.readAsDataURL(file);
     }
+}
+
+function vizualizare(mesaj) {
+  var h = document.createElement("H1");
+  var t = document.createTextNode(mesaj);
+  h.appendChild(t);
+  document.body.appendChild(h);
 }
