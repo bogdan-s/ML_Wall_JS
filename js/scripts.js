@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoad', initImageLoader);
 
 function initImageLoader() {
     var location = window.location.href.replace(/\/+$/, "");
-    loadFile(location + './images/pic_the_scream.jpg');
+    loadFile('./images/pic_the_scream.jpg');
 }
 
 function loadFile(file) {
