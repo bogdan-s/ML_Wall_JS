@@ -75,7 +75,7 @@ const UnetDemo = async () => {
     status('Loading model...');
 
     uNetModel = await tf.loadLayersModel(MODEL_PATH);
-
+    console.log(uNetModel.summary());
     status('Model Loaded')
 
     uNetModel.predict(tf.zeros([1, IMAGE_SIZE, IMAGE_SIZE, 3])).dispose();
