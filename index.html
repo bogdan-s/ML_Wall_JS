@@ -116,6 +116,7 @@ async function predict(imgElement) {
     console.log(b.shape + " B Shape");
     let maskRGB = tf.browser.toPixels(b, canvas_Output);
     console.log(maskRGB);
+    status('DONE !!!');
     // showResults(maskRGB);
     // retun (maskRGB);
 };
