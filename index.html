@@ -78,7 +78,7 @@ const UnetDemo = async () => {
     console.log(uNetModel.summary());
     status('Model Loaded')
 
-    uNetModel.predict(tf.zeros([1, IMAGE_SIZE, IMAGE_SIZE, 3])).dispose();
+    //uNetModel.predict(tf.zeros([1, IMAGE_SIZE, IMAGE_SIZE, 3])).dispose();
 
     status('Model test OK');
     // console.log(tf.memory());
