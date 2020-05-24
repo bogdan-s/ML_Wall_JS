@@ -1,10 +1,10 @@
 <!-- python -m http.server -->
 <html>
 <head>
-  <title>TensorFlow.js: Using a pretrained MobileNet</title>
+  <title>TensorFlow.js: Using a pretrained Unet</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.1"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
 
 
 
@@ -48,8 +48,8 @@
         <input type="file" id="files" name="files[]" multiple />
       </div>
       <div id="canvas area">
-          <canvas id="canvas_in" width="256" height="256" style="border:1px solid #000000;"></canvas>
-          <canvas id="canvas" width="256" height="256" style="border:1px solid #FF0000;"></canvas>
+          <canvas id="canvas_in" width="512" height="512" style="border:1px solid #000000;"></canvas>
+          <canvas id="canvas" width="512" height="512" style="border:1px solid #FF0000;"></canvas>
       </div>
       <div id="predictions"></div>
 
@@ -59,13 +59,14 @@
     <!-- <script src="./js/scripts.js" type=module></script> -->
 
 <script>
+
 const canvas_In = document.getElementById('canvas_in');
 const canvas_Output = document.getElementById('canvas');
 const predictionsElement = document.getElementById('predictions');    
 const demoStatusElement = document.getElementById('status');
 const status = msg => demoStatusElement.innerText = msg;
 const MODEL_PATH = './Model/model.json';
-const IMAGE_SIZE = 256;
+const IMAGE_SIZE = 512;
 status('Loading model...');
 
 let uNetModel;
@@ -75,9 +76,11 @@ const UnetDemo = async () => {
 
     uNetModel = await tf.loadLayersModel(MODEL_PATH);
 
+    status('Model Loaded')
+
     uNetModel.predict(tf.zeros([1, IMAGE_SIZE, IMAGE_SIZE, 3])).dispose();
 
-    status('a ajuns aici');
+    status('Model test OK');
     // console.log(tf.memory());
 }
 
