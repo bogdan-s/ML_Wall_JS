@@ -4,7 +4,7 @@
   <title>TensorFlow.js: Using a pretrained Unet</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 
 
 
@@ -67,20 +67,19 @@ const demoStatusElement = document.getElementById('status');
 const status = msg => demoStatusElement.innerText = msg;
 const MODEL_PATH = './Weights/model.json';
 const IMAGE_SIZE = 512;
-status('Loading model...');
+status('Loading model... ');
 
 let uNetModel;
 
 const UnetDemo = async () => {
     status('Loading model...');
-
     uNetModel = await tf.loadLayersModel(MODEL_PATH);
     console.log(uNetModel.summary());
-    status('Model Loaded')
+    status('Model Loaded ' + tf.getBackend())
 
     //uNetModel.predict(tf.zeros([1, IMAGE_SIZE, IMAGE_SIZE, 3])).dispose();
 
-    status('Model test OK');
+    status('Model test OK ' + tf.getBackend());
     // console.log(tf.memory());
 }
 
